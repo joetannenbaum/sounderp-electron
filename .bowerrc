@@ -1,4 +1,4 @@
 {
-  "directory": "public/js/components/",
+  "directory": "build/js/components/",
   "analytics": false
 }

@@ -3,13 +3,13 @@ var gulp          = require('gulp');
 var templateCache = require('gulp-angular-templatecache');
 
 gulp.task('cacheTemplates', function () {
-    gulp.src('resources/assets/js/templates/**/*.html')
+    gulp.src('assets/js/templates/**/*.html')
         .pipe(templateCache())
-        .pipe(gulp.dest('public/js'));
+        .pipe(gulp.dest('build/js'));
 });
 
 elixir(function(mix) {
-    mix.sass('main.scss')
-        .browserify('app.js')
-        .task('cacheTemplates', 'resources/assets/js/templates/**/*.html');
+    mix.sass('./assets/sass/main.scss', 'build/css')
+        .browserify('app.js', 'build/js', 'assets/js')
+        .task('cacheTemplates', 'assets/js/templates/**/*.html');
 });
